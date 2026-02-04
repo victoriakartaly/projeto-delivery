@@ -2,7 +2,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useNavigate } from 'react-router-dom';
-import './MiniCart.css'; // Importe seu CSS
+import './MiniCart.css'; 
 
 const MiniCart = () => {
     const { cart, currentTotal } = useCart();
