@@ -1,4 +1,4 @@
-// src/components/MiniCart.jsx (Não precisa de alteração, pois já usa useCart)
+
 import React from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useNavigate } from 'react-router-dom';
