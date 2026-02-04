@@ -1,7 +1,6 @@
-// src/components/ProductCard.jsx
 
 import React from 'react';
-import { FaPlus, FaMinus, FaCartPlus } from 'react-icons/fa'; // Assumindo que você está usando react-icons
+import { FaPlus, FaMinus, FaCartPlus } from 'react-icons/fa'; 
 
 const ProductCard = ({ 
     product, 
@@ -18,16 +17,15 @@ const ProductCard = ({
         available 
     } = product;
 
-    // Função auxiliar para formatar o preço
+    
     const formatPrice = (p) => `R$ ${p.toFixed(2).replace('.', ',')}`;
 
     return (
         <div className="product-card bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex flex-col overflow-hidden">
             
-            {/* Imagem do Produto */}
             <div className="relative h-48">
                 <img 
-                    src={imageUrl || 'placeholder.jpg'} // Use uma imagem de fallback
+                    src={imageUrl || 'placeholder.jpg'} 
                     alt={name} 
                     className="w-full h-full object-cover"
                 />
@@ -38,7 +36,7 @@ const ProductCard = ({
                 )}
             </div>
 
-            {/* Detalhes do Produto */}
+            
             <div className="p-4 flex-grow">
                 <h3 className="text-xl font-bold text-gray-800 mb-1">{name}</h3>
                 <p className="text-sm text-gray-500 mb-3 line-clamp-2">{description}</p>
@@ -49,10 +47,10 @@ const ProductCard = ({
                 </div>
             </div>
 
-            {/* Ações e Controle de Quantidade */}
+            
             <div className="p-4 bg-gray-50 border-t border-gray-100">
                 {quantityInCart > 0 ? (
-                    // Estado: Item já está no carrinho
+                    
                     <div className="flex justify-between items-center space-x-2">
                         <button
                             onClick={onRemoveItem}
@@ -77,7 +75,7 @@ const ProductCard = ({
                         </button>
                     </div>
                 ) : (
-                    // Estado: Item não está no carrinho
+                   
                     <button
                         onClick={onAddItem}
                         disabled={!available}
