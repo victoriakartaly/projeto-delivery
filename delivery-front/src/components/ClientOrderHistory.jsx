@@ -1,8 +1,8 @@
 /* eslint-disable no-irregular-whitespace */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // 💡 IMPORTAÇÃO NECESSÁRIA
+import { useNavigate } from 'react-router-dom'; 
 import api from '../services/api'; 
-import { FaClock, FaCheckCircle, FaTruck, FaTimesCircle, FaUtensils, FaHourglassHalf, FaMapMarkerAlt, FaRulerCombined, FaEye } from 'react-icons/fa'; // 💡 Adicionando FaEye
+import { FaClock, FaCheckCircle, FaTruck, FaTimesCircle, FaUtensils, FaHourglassHalf, FaMapMarkerAlt, FaRulerCombined, FaEye } from 'react-icons/fa'; 
 
 const getStatusDisplay = (status) => {
     switch (status) {
@@ -37,7 +37,7 @@ const ClientOrderHistory = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
-    // 💡 1. Inicializa o hook de navegação
+   
     const navigate = useNavigate(); 
     
     
@@ -57,7 +57,7 @@ const ClientOrderHistory = () => {
         }
     };
 
-    // 💡 2. Função para navegar para os detalhes do pedido
+    
     const handleViewOrder = (orderId) => {
         navigate(`/client/order/${orderId}`);
     };
@@ -65,10 +65,10 @@ const ClientOrderHistory = () => {
     useEffect(() => {
         fetchOrders();
         
-        const intervalId = setInterval(fetchOrders, 15000); // Atualiza a cada 15 segundos
+        const intervalId = setInterval(fetchOrders, 15000); 
         
         
-        return () => clearInterval(intervalId); // Limpeza
+        return () => clearInterval(intervalId);
     }, []);
 
     
@@ -120,7 +120,7 @@ const ClientOrderHistory = () => {
                                         {statusInfo.icon}
                                         {statusInfo.label}
                                     </span>
-                                    {/* 💡 Botão para Acompanhar o Pedido */}
+                                    
                                     <button
                                         onClick={() => handleViewOrder(order._id)}
                                         className="inline-flex items-center gap-1 px-3 py-1 text-sm font-semibold rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition shadow-md"
@@ -130,7 +130,7 @@ const ClientOrderHistory = () => {
                                 </div>
                             </div>
 
-                            {/* Informações de Resumo */}
+                            
                             <div className="grid grid-cols-2 gap-y-3 text-sm text-gray-600">
                                 
                                 <p className="font-medium text-gray-700">Total:</p>
@@ -143,12 +143,12 @@ const ClientOrderHistory = () => {
                                 <p className="text-right flex items-center justify-end gap-1"><FaClock className="text-gray-400" />{formattedDate}</p>
                             </div>
 
-                            {/* Detalhes (Endereço e Itens) */}
+                            
                             <details className="mt-4 pt-4 border-t border-dashed border-gray-300">
                                 <summary className="cursor-pointer font-bold text-gray-700 hover:text-purple-600 transition">Ver Itens e Endereço de Entrega</summary>
                                 <div className="mt-3 p-3 bg-gray-100 rounded-lg space-y-3 text-sm">
                                     
-                                    {/* Endereço de Entrega */}
+                                    
                                     <h5 className="font-semibold flex items-center gap-2 text-base text-gray-800 border-b pb-1"><FaMapMarkerAlt /> Endereço de Entrega:</h5>
                                     <p>
                                         Rua: **{order.deliveryAddress?.street || 'N/A'}**, 
@@ -156,10 +156,10 @@ const ClientOrderHistory = () => {
                                         Bairro: **{order.deliveryAddress?.neighborhood || 'N/A'}**
                                     </p>
                                     
-                                    {/* Itens do Pedido */}
+                                    
                                     <h5 className="font-semibold flex items-center gap-2 text-base text-gray-800 border-b pb-1 mt-3"><FaRulerCombined /> Itens do Pedido:</h5>
                                     <ul className="list-disc list-inside ml-4 space-y-1">
-                                        {/* Mapeia os itens do pedido */}
+                                        
                                         {order.items.map((item, index) => (
                                             <li key={index} className="text-gray-600">
                                                 <span className="font-bold">{item.quantity}x</span> {item.productName || `Produto ID: ${item.productId.slice(-6)}...`} - {formatCurrency(item.price)}
